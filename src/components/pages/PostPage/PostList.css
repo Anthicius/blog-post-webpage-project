@@ -1,0 +1,10 @@
+.post-list {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .post-item {
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }

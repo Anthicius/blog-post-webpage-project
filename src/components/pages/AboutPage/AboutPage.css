@@ -1,0 +1,14 @@
+.main-wrapper *{
+    padding: 10px 0px;
+}
+
+
+.image-section {
+    display: flex;
+    justify-content: center;
+}
+
+.image-section {
+    width: auto;
+    height: 50vh;
+}
