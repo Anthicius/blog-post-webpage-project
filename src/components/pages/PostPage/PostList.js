@@ -18,7 +18,10 @@ const PostList = () => {
             const imageUrl = await getDownloadURL(ref(storage, `images/${doc.id}`)).catch((error) => console.log(error));
             return { ...postData, id: doc.id, imageUrl: imageUrl };
           });
-          Promise.all(postData).then((data) => setData(data));
+          Promise.all(postData).then((data) => {
+            data.sort((a,b)=> new Date(b.date) - new Date(a.date))
+            setData(data) 
+          });
         });
     };
     fetchPostData();
@@ -28,7 +31,7 @@ const PostList = () => {
     <div className="post-list">
       {data.map((post) => (
         <Link to={`/post/${post.id}`} key={post.id} className='post-item'>
-          <PostItem id={post.id} date={post.date} readMore={true} title={post.title} description={post.description} like={post.like} imageUrl={post.imageUrl} tags={post.tags} />
+          <PostItem id={post.id} date={post.date} title={post.title} description={post.description} like={post.like} imageUrl={post.imageUrl} tags={post.tags} />
         </Link>
       ))}
     </div>

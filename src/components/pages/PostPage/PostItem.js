@@ -1,10 +1,10 @@
 import React from 'react'
 import './PostItem.css'
 
-const PostItem = ({id,date, readMore, title, description,like, tags, imageUrl}) => {
+const PostItem = ({id,date, title, description,like, tags, imageUrl}) => {
   
   return (
-<div class="container">
+<div class="container" key={id}>
     <div class="post">
         <div class="header_post">
             <img src={imageUrl} alt=""/>

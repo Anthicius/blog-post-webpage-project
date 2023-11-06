@@ -8,6 +8,10 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   }
+
+  .post-details {
+    width: 60%;
+  }
   
   .post-image img {
     width: 100%;
@@ -18,12 +22,39 @@
     margin-bottom: 20px;
   }
   
+  .post-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
   .post-title {
     font-size: 2.5em;
     font-weight: bold;
     margin-bottom: 10px;
     color: #333;
+    text-align: center;
   }
+  
+  .post-icons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .post-edit-icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .post-delete-icon {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+  }
+  
   
   .post-description {
     font-size: 1.2em;

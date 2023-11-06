@@ -12,6 +12,7 @@ import facebookIcon from "./assets/images/facebook.png"
 import instagramIcon from "./assets/images/instagram.png"
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import ContactPage from "./components/pages/ContactPage/ContactPage";
+import EditPostPage from "./components/pages/PostPage/EditPostPage";
 
 function App() {
   const [user, setUser] = useState();
@@ -81,6 +82,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/post/:id" element={<PostPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/post/:id/edit" element={<EditPostPage />} />
           </Routes>
         </div>
         <footer className="footer">

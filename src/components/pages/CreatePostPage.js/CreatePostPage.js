@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { collection, addDoc  } from "firebase/firestore";
 import {ref, uploadBytes} from "firebase/storage";
 import { storage, firestore } from "../../../services/firebase/config";
+import { useNavigate } from "react-router-dom";
 import "./CreatePostPage.css"
 
 const CreatePostPage = () => {
@@ -9,6 +10,7 @@ const CreatePostPage = () => {
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
   const [image, setImage] = useState(null);
+  const navigate = useNavigate();
 
   const handleTagChange = (e) => {
     const tagValue = e.target.value;
@@ -18,16 +20,19 @@ const CreatePostPage = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
+
     const newPostData = {
       title: title,
       description: description,
-      date: new Date().toLocaleString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
+      date:new Date().toLocaleString("en-US", options),
       like: 1,
       tags: tags,
     };
@@ -46,6 +51,9 @@ const CreatePostPage = () => {
     setTitle("");
     setDescription("");
     setTags([]);
+    setImage(null)
+
+    navigate("/")
   };
 
   return (
