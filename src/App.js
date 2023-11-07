@@ -13,6 +13,8 @@ import instagramIcon from "./assets/images/instagram.png"
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import ContactPage from "./components/pages/ContactPage/ContactPage";
 import EditPostPage from "./components/pages/PostPage/EditPostPage";
+import SearchBar from "./components/pages/PostPage/SearchBar";
+import SearchResults from "./components/pages/PostPage/SearchResults";
 
 function App() {
   const [user, setUser] = useState();
@@ -72,6 +74,9 @@ function App() {
                 <Link to="/login">Login</Link>
               </li>
             )}
+            <li>
+              <SearchBar/>
+            </li>
           </ul>
         </nav>
         <div className="main-content">
@@ -82,6 +87,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/post/:id" element={<PostPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/search/:id" element={<SearchResults />} />
             <Route path="/post/:id/edit" element={<EditPostPage />} />
           </Routes>
         </div>

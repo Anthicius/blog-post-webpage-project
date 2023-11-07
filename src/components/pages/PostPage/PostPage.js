@@ -17,9 +17,7 @@ const PostPage = () => {
   const [imageUrl, setImageUrl] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
-
-
-
+  
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -39,6 +37,7 @@ const PostPage = () => {
         console.log("No such document!");
       }
     };
+  
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
