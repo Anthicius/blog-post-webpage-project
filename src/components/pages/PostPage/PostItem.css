@@ -130,15 +130,19 @@ p {
 
 .tags ul {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .tags ul li {
   font-size: 12px;
   letter-spacing: 2px;
   list-style: none;
-  margin-left: 8px;
+  margin-right: 9px;
   text-transform: uppercase;
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -165,4 +169,34 @@ p {
 
 .tags ul li:hover:before {
   height: 18px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .post {
+    width: 70vw;
+    height: 90vh;
+  }
+}
+
+
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  .post {
+    width: 70vw;
+    height: 90vh;
+  }
+}
+
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+  .post {
+    width: 70vw;
+    height: 90vh;
+  }
+}
+
+
+@media only screen and (min-width: 1025px) {
+
 }

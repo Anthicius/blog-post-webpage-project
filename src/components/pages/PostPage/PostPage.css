@@ -90,3 +90,17 @@
     color: #fff;
   }
   
+
+  @media only screen and (max-width: 600px) {
+    .container {
+      min-width: 400px;
+      margin: 50px 0px !important;
+    }
+  }
+  
+  @media only screen and (min-width: 601px) and (max-width: 768px) {
+    .container {
+      min-width: 400px;
+      margin: 50px 0px !important;
+    }
+  }

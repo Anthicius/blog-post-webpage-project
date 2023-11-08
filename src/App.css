@@ -2,50 +2,6 @@
     margin: 0 auto;
   }
   
-  .navbar {
-    background: rgb(27,58,76);
-    background: linear-gradient(45deg, rgba(27,58,76,1) 35%, rgba(76,100,114,1) 100%);  
-    padding: 1rem;
-    font-size: 1.5rem;
-    color: #fff;
-  }
-
-  .logo {
-    display: flex;
-    justify-content: center;
-  }
-
-  .logo img {
-    width: auto;
-    object-fit: contain;
-    height: 200px; 
-    justify-content: center;
-  }
-  
-  .ul-list {
-    display: flex;
-    flex: 1;
-    gap: 5rem;
-    list-style: none;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-
-  }
-  
-  .ul-list li {
-    margin-right: 1rem;
-  }
-  
-  .ul-list li a {
-    text-decoration: none;
-    color: #fff;
-    transition: all 0.3s ease;
-  }
-  
-  .ul-list li a:hover {
-    color: #fca311;
-  }
 
   .main-content {
     margin: 0 17vw;
@@ -85,28 +41,5 @@
   }
   
   
-  .log-out {
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    background-color: #2e7d9ec4;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .log-out:hover {
-    background-color: #207A9B; 
-    transform: scale(1.1);
-  }
-  
-  .log-out:focus {
-    outline: none;
-  }
-  
 
-  .footer-icons {
-    width: auto;
-    height: 30px;
-  }
+
