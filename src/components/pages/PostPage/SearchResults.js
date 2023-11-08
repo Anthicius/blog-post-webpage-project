@@ -3,7 +3,7 @@ import PostItem from './PostItem';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { ref, getDownloadURL } from 'firebase/storage';
 import { firestore, storage } from '../../../services/firebase/config';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const SearchResults = () => {
   const [searchTermDataFetch, setSearchTermDataFetch] = useState([]);
@@ -51,6 +51,7 @@ const SearchResults = () => {
     <div>
       {searchTermDataFetch && searchTermDataFetch.length > 0 ? (
         searchTermDataFetch.map((post) => (
+          <Link to={`/post/${post.id}`}>
           <PostItem
             key={post.id}
             id={post.id}
@@ -61,6 +62,7 @@ const SearchResults = () => {
             imageUrl={post.imageUrl}
             tags={post.tags}
           />
+          </Link>
         ))
       ) : (
         <p>No results found</p>

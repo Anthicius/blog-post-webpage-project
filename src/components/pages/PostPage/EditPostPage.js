@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./EditPostPage.css";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { firestore, storage } from "../../../services/firebase/config";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
@@ -14,6 +14,8 @@ const EditPostPage = () => {
   const [editTags, setEditTags] = useState("");
   const [data, setData] = useState(null);
   const { id } = useParams();
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -48,6 +50,12 @@ const EditPostPage = () => {
   const handleTagChange = (e) => {
     const tagValue = e.target.value;
     setEditTags(tagValue.split(",").map((tag) => tag.trim()));
+  };
+
+  const goBackHandler = () => {
+    setTimeout(() => {
+      navigate(-1); 
+    }, 4000); 
   };
 
   const handleImageChange = (e) => {
@@ -127,7 +135,7 @@ const EditPostPage = () => {
             required
             className="input-field"
           />
-          <button className="submit-button">Confirm</button>
+          <button className="submit-button" onClick={goBackHandler }>Confirm</button>
           <ToastContainer />
         </form>
       )}
