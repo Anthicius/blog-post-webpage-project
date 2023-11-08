@@ -1,3 +1,4 @@
+// SearchResults.js
 import React, { useEffect, useState } from 'react';
 import PostItem from './PostItem';
 import { collection, getDocs, query, where } from 'firebase/firestore';
@@ -11,34 +12,16 @@ const SearchResults = () => {
   const searchTerm = location.pathname.split('/').pop();
 
   const searchHandler = async (searchTerm) => {
-    const titleQuery = query(collection(firestore, 'posts'), where('title', '==', searchTerm));
-    const descriptionQuery = query(collection(firestore, 'posts'), where('description', '==', searchTerm));
-
-    const titleQuerySnapshot = await getDocs(titleQuery);
-    const descriptionQuerySnapshot = await getDocs(descriptionQuery);
-
-    const titlePromises = titleQuerySnapshot.docs.map(async (doc) => {
+    const querySnapshot = await getDocs(collection(firestore, 'posts'));
+    const data = [];
+    querySnapshot.forEach((doc) => {
       const postData = doc.data();
-      const imageUrl = await getDownloadURL(ref(storage, `images/${doc.id}`)).catch((error) =>
+      const imageUrl = getDownloadURL(ref(storage, `images/${doc.id}`)).catch((error) =>
         console.log(error)
       );
-      return { ...postData, id: doc.id, imageUrl: imageUrl };
+      data.push({ ...postData, id: doc.id, imageUrl: imageUrl });
     });
-
-    const descriptionPromises = descriptionQuerySnapshot.docs.map(async (doc) => {
-      const postData = doc.data();
-      const imageUrl = await getDownloadURL(ref(storage, `images/${doc.id}`)).catch((error) =>
-        console.log(error)
-      );
-      return { ...postData, id: doc.id, imageUrl: imageUrl };
-    });
-
-    const titleData = await Promise.all(titlePromises);
-    const descriptionData = await Promise.all(descriptionPromises);
-
-    const combinedData = titleData.concat(descriptionData);
-
-    setSearchTermDataFetch(combinedData);
+    setSearchTermDataFetch(data);
   };
 
   useEffect(() => {
@@ -47,21 +30,27 @@ const SearchResults = () => {
     }
   }, [searchTerm]);
 
+
+  const filteredData = searchTermDataFetch.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
-      {searchTermDataFetch && searchTermDataFetch.length > 0 ? (
-        searchTermDataFetch.map((post) => (
-          <Link to={`/post/${post.id}`}>
-          <PostItem
-            key={post.id}
-            id={post.id}
-            date={post.date}
-            title={post.title}
-            description={post.description}
-            like={post.like}
-            imageUrl={post.imageUrl}
-            tags={post.tags}
-          />
+      {filteredData && filteredData.length > 0 ? (
+        filteredData.map((post) => (
+          <Link to={`/post/${post.id}`} key={post.id}>
+            <PostItem
+              id={post.id}
+              date={post.date}
+              title={post.title}
+              description={post.description}
+              like={post.like}
+              imageUrl={post.imageUrl}
+              tags={post.tags}
+            />
           </Link>
         ))
       ) : (

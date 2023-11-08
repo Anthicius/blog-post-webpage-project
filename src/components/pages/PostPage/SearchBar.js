@@ -1,3 +1,4 @@
+// SearchBar.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,7 +9,7 @@ const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const searchHandler = async () => {
+  const searchHandler = () => {
     navigate(`/search/${searchTerm}`);
   };
 
@@ -19,19 +20,19 @@ const SearchBar = () => {
   };
 
   return (
-      <div class="search-box">
-        <button class="btn-search" onClick={searchHandler}>
+    <div className="search-box">
+      <button className="btn-search" onClick={searchHandler}>
         <FontAwesomeIcon icon={faSearch} />
-        </button>
-        <input
-          type="text"
-          class="input-search"
-          placeholder="Type to Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
-      </div>
+      </button>
+      <input
+        type="text"
+        className="input-search"
+        placeholder="Type to Search..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
+      />
+    </div>
   );
 };
 
