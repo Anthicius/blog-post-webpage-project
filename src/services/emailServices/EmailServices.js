@@ -1,9 +1,9 @@
 import emailjs from 'emailjs-com';
 
 const EmailServices = (formData) => {
-  const serviceID = 'service_5taob1n';
-  const templateID = 'template_z4p98pc'; 
-  const userID = 'WtnhdTHsR98LwEjeM'; 
+  const serviceID = 'x';
+  const templateID = 'x'; 
+  const userID = 'X'; 
 
   const sendEmail = () => {
     emailjs.send(serviceID, templateID, formData, userID)
